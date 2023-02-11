@@ -1,0 +1,9 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- CREATE OR REPLACE FUNCTION rate_average(avg_rate receipe)
+--  RETURNS double precision
+--  LANGUAGE sql
+--  STABLE
+-- AS $function$
+--     select AVG(rating) FROM ratings where receipe_id = avg_rate.id
+-- $function$;

@@ -1,0 +1,53 @@
+table:
+  schema: public
+  name: comments
+object_relationships:
+  - name: receipe
+    using:
+      foreign_key_constraint_on: receipe_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - comment
+        - id
+        - receipe_id
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - comment
+        - id
+        - receipe_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - comment
+        - id
+        - receipe_id
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - comment
+        - id
+        - receipe_id
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      backend_only: false
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id

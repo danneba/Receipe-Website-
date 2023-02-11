@@ -1,0 +1,11 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- CREATE OR REPLACE FUNCTION public.rating_avg(rec_id text)
+-- RETURNS text  AS $$
+-- DECLARE
+-- total text;
+-- BEGIN
+-- SELECT AVG(rating) INTO total FROM ratings where receipe_id = rec_id;
+-- return total;
+-- END;
+-- $$ LANGUAGE plpgsql;

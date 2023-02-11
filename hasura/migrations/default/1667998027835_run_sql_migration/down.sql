@@ -1,0 +1,9 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- CREATE OR REPLACE FUNCTION public.rate_average()
+--  RETURNS double precision
+--  LANGUAGE sql
+--  STABLE
+-- AS $function$
+--     select AVG(rating) FROM ratings
+-- $function$;

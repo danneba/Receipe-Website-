@@ -1,0 +1,21 @@
+type Mutation {
+  signup(
+    fname: String!
+    lname: String!
+    password: String!
+    email: String!
+    phone_no: String!
+  ): signupOutput
+}
+
+type signupOutput {
+  id: uuid!
+}
+
+type SsOutput {
+  email: String!
+  fname: String!
+  id: uuid!
+  lname: String!
+}
+

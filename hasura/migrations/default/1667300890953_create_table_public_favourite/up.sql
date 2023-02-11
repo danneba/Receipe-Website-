@@ -1,0 +1,2 @@
+CREATE TABLE "public"."favourite" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "user_id" uuid NOT NULL, "receipe_id" uuid NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("receipe_id") REFERENCES "public"."receipe"("id") ON UPDATE restrict ON DELETE restrict, FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON UPDATE restrict ON DELETE restrict, UNIQUE ("id"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

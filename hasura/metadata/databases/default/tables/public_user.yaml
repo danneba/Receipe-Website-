@@ -1,0 +1,103 @@
+table:
+  schema: public
+  name: user
+array_relationships:
+  - name: comments
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: comments
+  - name: favourites
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: favourite
+  - name: likes
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: like
+  - name: ratings
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: ratings
+  - name: receipes
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: receipe
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - email
+        - fname
+        - lname
+        - password
+        - phone_no
+        - created_at
+        - updated_at
+        - id
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - email
+        - fname
+        - lname
+        - password
+        - phone_no
+        - created_at
+        - updated_at
+        - id
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - fname
+        - lname
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - fname
+        - lname
+        - phone_no
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - email
+        - fname
+        - id
+        - lname
+        - password
+        - phone_no
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      check: null
+      set:
+        id: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      backend_only: false
+      filter:
+        id:
+          _eq: X-Hasura-User-Id

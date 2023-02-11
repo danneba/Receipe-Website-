@@ -1,0 +1,15 @@
+actions:
+  - name: signup
+    definition:
+      kind: synchronous
+      handler: http://localhost:5000/signup
+    permissions:
+      - role: user
+      - role: anonymous
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+    - name: signupOutput
+    - name: SsOutput
+  scalars: []
